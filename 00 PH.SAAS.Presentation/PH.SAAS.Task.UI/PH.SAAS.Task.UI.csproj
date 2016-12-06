@@ -331,6 +331,10 @@
       <Project>{a02bcc94-9fc8-4084-b7d8-dae85be0a745}</Project>
       <Name>PH.SAAS.Task.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\02 PH.SAAS.Utility\PH.SAAS.Task.Core\PH.SAAS.Task.Core.csproj">
+      <Project>{0a3ceabf-dc48-4cfd-872f-f79804ce04e0}</Project>
+      <Name>PH.SAAS.Task.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />

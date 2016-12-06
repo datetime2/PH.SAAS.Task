@@ -25,5 +25,12 @@ namespace PH.SAAS.Task.Data.Dao
                 return grid;
             });
         }
+        public bool Update(t_Users user)
+        {
+            return Commit((client) =>
+            {
+                return false;//client.Execute("") > 0;
+            });
+        }
     }
 }

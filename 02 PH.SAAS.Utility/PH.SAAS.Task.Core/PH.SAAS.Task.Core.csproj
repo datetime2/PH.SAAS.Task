@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AjaxResult.cs" />
     <Compile Include="CompressHelper.cs" />
     <Compile Include="CustomCorn\BaseCustomCorn.cs" />
     <Compile Include="CustomCorn\RunOnceCorn.cs" />
