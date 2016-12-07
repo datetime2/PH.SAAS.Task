@@ -31,10 +31,9 @@
                         return false;
                     var postdata = $("#form1").formSerialize();
                     $.submitForm({
-                        url: "/Category/SubmitForm?keyValue=" + keyValue,
+                        url: "/Category/SubmitForm",
                         param: postdata,
                         success: function () {
-                            $.currentWindow().$("#grid").resetSelection();
                             $.currentWindow().$("#grid").trigger("reloadGrid");
                         }
                     });
@@ -49,7 +48,8 @@
                 <tr>
                     <th class="formTitle">分类名称</th>
                     <td class="formValue" colspan="3">
-                        <input id="CategoryName" name="CategoryName" type="text" class="form-control required" />
+                        <input id="categoryName" name="categoryName" type="text" class="form-control required" />
+                        <input id="categoryId" name="categoryId" type="hidden" class="form-control" />
                     </td>
                 </tr>
             </table>

@@ -12,7 +12,7 @@ namespace PH.SAAS.Task.Data.Dao
     {
         public bool SaveForm(t_Category category)
         {
-            return Commit((client) => category.CategoryId.HasValue ? client.Update(category) : client.Insert(category));
+            return Commit((client) => category.CategoryId.HasValue ? client.Update(category) : client.Insert(category)>0);
         }
 
         public t_Category InitForm(int keyValue)

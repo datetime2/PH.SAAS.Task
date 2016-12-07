@@ -2,7 +2,7 @@
 
 namespace PH.SAAS.Task.Models
 {
-    public class t_Users
+    public class t_Users : t_BaseEntity
     {
         public int? UserId { get; set; }
         public string UserName { get; set; }
@@ -11,8 +11,6 @@ namespace PH.SAAS.Task.Models
         public string RealName { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public DateTime CreateTime { get; set; }
-        public DateTime? LastUpdTime { get; set; }
         public int IsEnabled { get; set; }
         public string Remark { get; set; }
     }

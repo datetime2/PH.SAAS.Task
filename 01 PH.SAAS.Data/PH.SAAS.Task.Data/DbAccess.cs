@@ -6,6 +6,7 @@ using System.Reflection;
 using DapperExtensions;
 using DapperExtensions.Mapper;
 using DapperExtensions.Sql;
+using PH.SAAS.Task.Core.Loger;
 using PH.SAAS.Task.Models.ViewModel;
 
 namespace PH.SAAS.Task.Data
@@ -76,9 +77,17 @@ namespace PH.SAAS.Task.Data
         /// <returns></returns>
         protected bool Commit(Func<IDatabase, bool> func)
         {
-            using (var client = DbFactory.CreateDb(DbType.MySql))
+            try
             {
-                return func(client);
+                using (var client = DbFactory.CreateDb(DbType.MySql))
+                {
+                    return func(client);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+                return false;
             }
         }
     }

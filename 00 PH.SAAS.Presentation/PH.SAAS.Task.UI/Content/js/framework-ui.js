@@ -220,7 +220,7 @@ $.submitForm = function (options) {
                 if (data.state == "success") {
                     options.success(data);
                     $.modalMsg(data.message, data.state);
-                    if (options.close == true) {
+                    if (options.close) {
                         $.modalClose();
                     }
                 } else {
@@ -322,7 +322,6 @@ $.fn.formValid = function () {
             }
         },
         success: function (element) {
-            console.log(222);
             element.parents('.has-error').find('i.error').remove();
             element.parent().removeClass('has-error');
         }

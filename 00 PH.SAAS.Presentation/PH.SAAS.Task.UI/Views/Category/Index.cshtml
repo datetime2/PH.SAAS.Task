@@ -55,6 +55,17 @@
                                     else
                                         return cellvalue;
                                 }
+                            },
+                            {
+                                label: '修改时间',
+                                name: 'lastUpdTime',
+                                align: 'center',
+                                formatter: function (cellvalue, options, rowObject) {
+                                    if (cellvalue != '')
+                                        return $.FormatDateBoxFull(cellvalue);
+                                    else
+                                        return cellvalue;
+                                }
                             }
                         ],
                         pager: "#gridPager",
