@@ -40,6 +40,7 @@ namespace PH.SAAS.Task.Data.Dao
             };
             return Pager((client) =>
             {
+                grid.records = client.Count<t_Category>(predGroup);
                 grid.rows = client.GetPage<t_Category>(predGroup, sort, query.page - 1, query.rows);
                 return grid;
             });

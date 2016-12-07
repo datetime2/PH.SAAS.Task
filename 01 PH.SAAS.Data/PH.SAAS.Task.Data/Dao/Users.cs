@@ -23,7 +23,7 @@ namespace PH.SAAS.Task.Data.Dao
             };
             IList<IPredicate> predList = new List<IPredicate>();
             if (!string.IsNullOrEmpty(query.keyword))
-                predList.Add(Predicates.Field<t_Users>(p => p.UserName, Operator.Like, query.keyword));
+                predList.Add(Predicates.Field<t_Users>(p => p.UserName, Operator.Eq, query.keyword));
             var predGroup = Predicates.Group(GroupOperator.And, predList.ToArray());
             var sort = new List<ISort>
             {
@@ -35,6 +35,7 @@ namespace PH.SAAS.Task.Data.Dao
             };
             return Pager((client) =>
             {
+                grid.records = client.Count<t_Users>(predGroup);
                 grid.rows = client.GetPage<t_Users>(predGroup, sort, query.page - 1, query.rows);
                 return grid;
             });
