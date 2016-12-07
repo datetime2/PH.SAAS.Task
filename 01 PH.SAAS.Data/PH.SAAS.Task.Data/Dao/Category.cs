@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Dapper;
 using DapperExtensions;
@@ -12,7 +13,16 @@ namespace PH.SAAS.Task.Data.Dao
     {
         public bool SaveForm(t_Category category)
         {
-            return Commit((client) => category.CategoryId.HasValue ? client.Update(category) : client.Insert(category)>0);
+            return Commit((client) =>
+            {
+                if (category.CategoryId.HasValue)
+                {
+                    category.LastUpdTime = DateTime.Now;
+                    return client.Update(category);
+                }
+                else
+                    return client.Insert(category) > 0;
+            });
         }
 
         public t_Category InitForm(int keyValue)
