@@ -45,6 +45,7 @@
     <Compile Include="Model\t_Tasks.cs" />
     <Compile Include="Model\t_Users.cs" />
     <Compile Include="QueryModel\jqGridBaseQueryModel.cs" />
+    <Compile Include="ViewModel\EditPostForm.cs" />
     <Compile Include="ViewModel\jqGridPagerViewModel.cs" />
   </ItemGroup>
   <ItemGroup />

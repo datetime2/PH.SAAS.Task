@@ -18,7 +18,7 @@
                 initForm: function () {
                     $.ajax({
                         url: "/Category/InitForm",
-                        data: { keyValue: keyValue },
+                        data: { "keyValue": keyValue },
                         dataType: "json",
                         async: false,
                         success: function (data) {
