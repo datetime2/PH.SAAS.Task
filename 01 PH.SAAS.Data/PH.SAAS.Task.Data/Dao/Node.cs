@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Dapper;
 using DapperExtensions;
 using PH.SAAS.Task.Models;
 using PH.SAAS.Task.Models.QueryModel;
@@ -9,35 +8,35 @@ using PH.SAAS.Task.Models.ViewModel;
 
 namespace PH.SAAS.Task.Data.Dao
 {
-    public class Category : DbAccess<t_Categories>
+    public class Node : DbAccess<t_Nodes>
     {
-        public bool SaveForm(t_Categories category)
+        public bool SaveForm(t_Nodes node)
         {
             return Commit((client) =>
             {
-                if (category.CategoryId.HasValue)
+                if (node.NodeId.HasValue)
                 {
-                    category.LastUpdTime = DateTime.Now;
-                    return client.Update(category);
+                    node.LastUpdTime = DateTime.Now;
+                    return client.Update(node);
                 }
                 else
-                    return client.Insert(category) > 0;
+                    return client.Insert(node) > 0;
             });
         }
-        public t_Categories InitForm(int keyValue)
+        public t_Nodes InitForm(int keyValue)
         {
-            return FirstOrDefault((client) => client.Get<t_Categories>(keyValue));
+            return FirstOrDefault((client) => client.Get<t_Nodes>(keyValue));
         }
-        public jqGridPagerViewModel<t_Categories> PageCategory(jqGridBaseQueryModel query)
+        public jqGridPagerViewModel<t_Nodes> PageCategory(jqGridBaseQueryModel query)
         {
-            var grid = new jqGridPagerViewModel<t_Categories>()
+            var grid = new jqGridPagerViewModel<t_Nodes>()
             {
                 page = query.page,
                 size = query.rows
             };
             IList<IPredicate> predList = new List<IPredicate>();
             if (!string.IsNullOrEmpty(query.keyword))
-                predList.Add(Predicates.Field<t_Categories>(p => p.CategoryName, Operator.Like, query.keyword));
+                predList.Add(Predicates.Field<t_Nodes>(p => p.NodeName, Operator.Like, query.keyword));
             var predGroup = Predicates.Group(GroupOperator.And, predList.ToArray());
             var sort = new List<ISort>
             {
@@ -49,8 +48,8 @@ namespace PH.SAAS.Task.Data.Dao
             };
             return Pager((client) =>
             {
-                grid.records = client.Count<t_Categories>(predGroup);
-                grid.rows = client.GetPage<t_Categories>(predGroup, sort, query.page - 1, query.rows);
+                grid.records = client.Count<t_Nodes>(predGroup);
+                grid.rows = client.GetPage<t_Nodes>(predGroup, sort, query.page - 1, query.rows);
                 return grid;
             });
         }

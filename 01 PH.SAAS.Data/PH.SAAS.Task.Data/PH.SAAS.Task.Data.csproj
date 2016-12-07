@@ -53,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao\Category.cs" />
+    <Compile Include="Dao\Node.cs" />
+    <Compile Include="Dao\Task.cs" />
     <Compile Include="Dao\Users.cs" />
     <Compile Include="DbAccess.cs" />
     <Compile Include="GlobalVariables.cs" />
