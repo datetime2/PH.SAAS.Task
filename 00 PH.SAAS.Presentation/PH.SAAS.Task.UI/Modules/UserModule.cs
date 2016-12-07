@@ -25,7 +25,7 @@ namespace PH.SAAS.Task.UI.Modules
             {
                 var userService = new Users();
                 var user = this.Bind<t_Users>();
-                return Response.AsJson(userService.Update(user) ? Success("操作成功") : Error("操作失败"));
+                return Response.AsJson(userService.SaveForm(user) ? Success("操作成功") : Error("操作失败"));
             };
         }
     }
