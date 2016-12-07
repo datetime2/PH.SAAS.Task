@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\t_Category.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\t_Tasks.cs" />
     <Compile Include="Model\t_Users.cs" />

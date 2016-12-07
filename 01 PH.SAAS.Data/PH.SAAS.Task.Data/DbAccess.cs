@@ -19,6 +19,7 @@ namespace PH.SAAS.Task.Data
                 action(client);
             }
         }
+
         /// <summary>
         /// FindBy
         /// </summary>

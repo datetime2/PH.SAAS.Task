@@ -13,11 +13,11 @@ namespace PH.SAAS.Task.Core
             //利用反射获得类成员
             var fieldFroms = from.GetType().GetProperties();
             var fieldTos = to.GetType().GetProperties();
-            int lenTo = fieldTos.Length;
+            var lenTo = fieldTos.Length;
 
             for (int i = 0, l = fieldFroms.Length; i < l; i++)
             {
-                for (int j = 0; j < lenTo; j++)
+                for (var j = 0; j < lenTo; j++)
                 {
                     if (fieldTos[j].Name != fieldFroms[i].Name) continue;
                     fieldTos[j].SetValue(to, fieldFroms[i].GetValue(from, null), null);

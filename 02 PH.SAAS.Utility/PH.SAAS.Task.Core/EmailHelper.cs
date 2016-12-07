@@ -107,10 +107,8 @@ namespace PH.SAAS.Task.Core
             {
                 if (attachmentsPath != null && attachmentsPath.Length > 0)
                 {
-                    Attachment attachFile = null;
-                    foreach (var path in attachmentsPath)
+                    foreach (var attachFile in attachmentsPath.Select(path => new Attachment(path)))
                     {
-                        attachFile = new Attachment(path);
                         myMail.Attachments.Add(attachFile);
                     }
                 }
@@ -120,13 +118,15 @@ namespace PH.SAAS.Task.Core
                 throw new Exception("在添加附件时有错误:" + err);
             }
 
-            SmtpClient smtp = new SmtpClient();
+            var smtp = new SmtpClient
+            {
+                Credentials = new System.Net.NetworkCredential(mailFrom, mailPwd),
+                Host = host
+            };
             //指定发件人的邮件地址和密码以验证发件人身份
-            smtp.Credentials = new System.Net.NetworkCredential(mailFrom, mailPwd);
 
 
             //设置SMTP邮件服务器
-            smtp.Host = host;
 
             try
             {

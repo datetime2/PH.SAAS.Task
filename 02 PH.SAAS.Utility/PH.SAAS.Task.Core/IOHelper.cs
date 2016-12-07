@@ -18,19 +18,12 @@ namespace PH.SAAS.Task.Core
         /// <returns></returns>
         public static long DirSize(DirectoryInfo d)
         {
-            long Size = 0;
             // 所有文件大小.
-            FileInfo[] fis = d.GetFiles();
-            foreach (FileInfo fi in fis)
-            {
-                Size += fi.Length;
-            }
+            var fis = d.GetFiles();
+            var Size = fis.Sum(fi => fi.Length);
             // 遍历出当前目录的所有文件夹.
-            DirectoryInfo[] dis = d.GetDirectories();
-            foreach (DirectoryInfo di in dis)
-            {
-                Size += DirSize(di);   //这就用到递归了，调用父方法,注意，这里并不是直接返回值，而是调用父返回来的
-            }
+            var dis = d.GetDirectories();
+            Size += dis.Sum(di => DirSize(di));
             return (Size);
         }
     }
