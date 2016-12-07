@@ -365,6 +365,7 @@
     <Content Include="Views\Performs\Task.cshtml" />
     <Content Include="Views\User\Form.cshtml" />
     <Content Include="Views\Index.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

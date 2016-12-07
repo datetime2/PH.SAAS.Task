@@ -11,8 +11,8 @@ namespace PH.SAAS.Task.Models
         public string RealName { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime? LastUpdDate { get; set; }
+        public DateTime CreateTime { get; set; }
+        public DateTime? LastUpdTime { get; set; }
         public int IsEnabled { get; set; }
         public string Remark { get; set; }
     }
