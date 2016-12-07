@@ -46,7 +46,7 @@
 .form .formValue .input-group .btn{padding: 4px 0px;font-size: 14px;height:30px;min-width: 30px;border-radius: 0px;}
 .form .formValue .input-group .btn .fa-ellipsis-h{margin-top: 4.5px;}
 .form .formValue.has-error .form-control.error{border-color:#e7bebe;background-color: #fffafa;}
-.form .formValue.has-error .form-control-feedback.error{color: #e46f61;top:5.5px;right: 4px;font-size:16px;cursor:pointer;z-index:99;}
+.form .formValue.has-error .form-control-feedback.error{color: #e46f61;top:9.5px;right: 4px;font-size:16px;cursor:pointer;z-index:99;}
 .form .formValue.has-error .form-control.success{border-color:#b0dd9c;background-color: #f3f7f1;}
 .form .formValue.has-error .form-control-feedback.success{color: #8cc474;top:5px;right: 4px;font-size:16px;}
 .form .formValue.has-error .select2-selection--single{border-color:#e7bebe;background-color: #fffafa;}

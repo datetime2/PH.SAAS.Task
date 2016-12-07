@@ -212,7 +212,6 @@
     <Content Include="Content\js\plugins\diff_match_patch\diff_match_patch.js" />
     <Content Include="Content\js\plugins\dropzone\dropzone.js" />
     <Content Include="Content\js\plugins\easypiechart\jquery.easypiechart.js" />
-    <Content Include="Content\js\plugins\echarts\echarts-all.js" />
     <Content Include="Content\js\plugins\fancybox\blank.gif" />
     <Content Include="Content\js\plugins\fancybox\fancybox_loading%402x.gif" />
     <Content Include="Content\js\plugins\fancybox\fancybox_loading.gif" />
@@ -243,6 +242,11 @@
     <Content Include="Content\js\plugins\jqgrid\jqgrid.css" />
     <Content Include="Content\js\plugins\jqgrid\jqgrid.min.js" />
     <Content Include="Content\js\plugins\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Content\js\plugins\jquery\jquery-2.1.1.min.js" />
+    <Content Include="Content\js\plugins\jquery\jquery.form.js" />
+    <Content Include="Content\js\plugins\jquery\jquery.phupload.js" />
+    <Content Include="Content\js\plugins\jquery\jquery.phuploadfile.js" />
+    <Content Include="Content\js\plugins\jquery\jquery.saasLinkage.nocreate.js" />
     <Content Include="Content\js\plugins\jsKnob\jquery.knob.js" />
     <Content Include="Content\js\plugins\jsTree\jstree.min.js" />
     <Content Include="Content\js\plugins\jvectormap\jquery-jvectormap-1.2.2.min.js" />

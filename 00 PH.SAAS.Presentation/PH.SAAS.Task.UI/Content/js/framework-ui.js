@@ -309,17 +309,20 @@ $.fn.jqGridRowValue = function () {
     }
 }
 $.fn.formValid = function () {
+
     return $(this).valid({
+
         errorPlacement: function (error, element) {
             element.parents('.formValue').addClass('has-error');
             element.parents('.has-error').find('i.error').remove();
             element.parents('.has-error').append('<i class="form-control-feedback fa fa-exclamation-circle error" data-placement="left" data-toggle="tooltip" title="' + error + '"></i>');
             $("[data-toggle='tooltip']").tooltip();
             if (element.parents('.input-group').hasClass('input-group')) {
-                element.parents('.has-error').find('i.error').css('right', '33px')
+                element.parents('.has-error').find('i.error').css('right', '33px');
             }
         },
         success: function (element) {
+            console.log(222);
             element.parents('.has-error').find('i.error').remove();
             element.parent().removeClass('has-error');
         }
@@ -475,13 +478,9 @@ $.ajaxRequest = function (option) {
         error: option.error
     });
 };
-
 $.UnChecked = function () {
     $.modalMsg("没有选择任何记录", "error");
 };
-/*
-        日期操作
- */
 Date.prototype.Format = function (format) {
     var o = {
         "M+": this.getMonth() + 1, //month 
