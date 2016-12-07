@@ -1,0 +1,58 @@
+﻿@section styles{
+
+    <link href="~/Content/css/framework-ui.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Content/js/framework-ui.js"></script>
+    <script src="~/Content/js/plugins/validate/jquery.validate.min.js"></script>
+    <script>
+        var keyValue = $.request("keyValue");
+        $(function () {
+            if (!!keyValue) {
+                $.categoryFrom.initForm();
+            }
+        });
+        (function ($) {
+            $.categoryFrom = {
+                initForm: function () {
+                    $.ajax({
+                        url: "/Category/InitForm",
+                        data: { keyValue: keyValue },
+                        dataType: "json",
+                        async: false,
+                        success: function (data) {
+                            $("#form1").formSerialize(data);
+                        }
+                    });
+                },
+                submitForm: function () {
+                    if (!$('#form1').formValid())
+                        return false;
+                    var postdata = $("#form1").formSerialize();
+                    $.submitForm({
+                        url: "/Category/SubmitForm?keyValue=" + keyValue,
+                        param: postdata,
+                        success: function () {
+                            $.currentWindow().$("#grid").resetSelection();
+                            $.currentWindow().$("#grid").trigger("reloadGrid");
+                        }
+                    });
+                }
+            };
+        })(jQuery);
+    </script>}
+<form id="form1">
+    <div style="margin-top: 10px; margin-left: 10px; margin-right: 10px;">
+        <div style="padding-top: 20px; margin-right: 30px;">
+            <table class="form">
+                <tr>
+                    <th class="formTitle">分类名称</th>
+                    <td class="formValue" colspan="3">
+                        <input id="CategoryName" name="CategoryName" type="text" class="form-control required" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</form>
+

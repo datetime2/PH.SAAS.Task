@@ -4,7 +4,7 @@
             <a class="btn btn-primary" onclick="$.reload()"><span class="glyphicon glyphicon-refresh"></span></a>
         </div>
         <div class="btn-group">
-            <a id="add" authorize="yes" class="btn btn-primary dropdown-text" onclick="$.manageIndex.addManage()"><i class="fa fa-plus"></i>新建分类</a>
+            <a id="add" authorize="yes" class="btn btn-primary dropdown-text" onclick="$.categoryIndex.addCategory()"><i class="fa fa-plus"></i>新建分类</a>
         </div>
     </div>
     <div class="search">
@@ -27,17 +27,17 @@
     <div id="gridPager"></div>
 </div>
 @section scripts{
+    <script src="~/Content/js/framework-ui.js"></script>
     <script src="~/Content/css/plugins/jqgrid/jqgrid.min.js"></script>
     <script src="~/Content/js/plugins/jqgrid/grid.locale-cn.js"></script>
-    <script src="~/Content/js/framework-ui.js"></script>
     <script src="~/Content/js/plugins/dialog/dialog.js"></script>
 
     <script>
         $(function () {
-            $.manageIndex.initGrid();
+            $.categoryIndex.initGrid();
         });
         (function ($) {
-            $.manageIndex = {
+            $.categoryIndex = {
                 initGrid: function () {
                     $("#grid").dataGrid({
                         url: "/Category/List",
@@ -67,43 +67,43 @@
                         }).trigger('reloadGrid');
                     });
                 },
-                addManage: function () {
+                addCategory: function () {
                     $.modalOpen({
                         id: "Form",
-                        title: "新增用户",
-                        url: "/User/Form",
-                        width: "500px",
-                        height: "400px",
+                        title: "新增分类",
+                        url: "/Category/Form",
+                        width: "300px",
+                        height: "200px",
                         callBack: function (iframeId) {
-                            top.frames[iframeId].$.manageForm.submitForm();
+                            top.frames[iframeId].$.categoryFrom.submitForm();
                         }
                     });
                 },
-                editManage: function () {
-                    var keyValue = $("#grid").jqGridRowValue().Id;
+                editCategory: function () {
+                    var keyValue = $("#grid").jqGridRowValue().categoryId;
                     if (!keyValue) {
                         $.UnChecked();
                         return;
                     }
                     $.modalOpen({
                         id: "Form",
-                        title: "修改用户",
-                        url: "/User/Form?keyValue=" + keyValue,
+                        title: "修改分类",
+                        url: "/Category/Form?keyValue=" + keyValue,
                         width: "500px",
                         height: "400px",
                         callBack: function (iframeId) {
-                            top.frames[iframeId].$.manageForm.submitForm();
+                            top.frames[iframeId].$.categoryFrom.submitForm();
                         }
                     });
                 },
-                removeManage: function () {
-                    if (!$("#grid").jqGridRowValue().Id) {
+                removeCategory: function () {
+                    if (!$("#grid").jqGridRowValue().categoryId) {
                         $.UnChecked();
                         return;
                     }
                     $.deleteForm({
-                        url: "/User/Delete",
-                        param: { keyValue: $("#grid").jqGridRowValue().Id },
+                        url: "/Category/Delete",
+                        param: { keyValue: $("#grid").jqGridRowValue().categoryId },
                         success: function () {
                             $.currentWindow().$("#grid").trigger("reloadGrid");
                         }
@@ -114,6 +114,7 @@
     </script>
 }
 @section styles{
+    <link href="~/Content/js/plugins/dialog/dialog.css" rel="stylesheet" />
     <link href="~/Content/css/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
     <link href="~/Content/css/framework-ui.css" rel="stylesheet" />
 }

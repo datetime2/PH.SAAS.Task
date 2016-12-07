@@ -10,6 +10,7 @@ namespace PH.SAAS.Task.UI.Modules
         public CategoryModule():base("/Category")
         {
             Get["/"] = parameters => View["Index"];
+            Get["/Form"] = parameters => View["Form"];
             Get["/List"] = paramsters =>
             {
                 var cateService = new Category();

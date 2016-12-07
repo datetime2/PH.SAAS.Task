@@ -36,7 +36,7 @@ $.request = function (name) {
     return "";
 }
 $.currentWindow = function () {
-    var iframeId = top.$(".SAAS_iframe:visible").attr("id");
+    var iframeId = top.$(".J_iframe:visible").attr("id");
     return top.frames[iframeId];
 }
 $.browser = function () {
@@ -100,11 +100,11 @@ $.modalOpen = function (options) {
         btn: options.btn,
         btnclass: options.btnclass,
         yes: function () {
-            options.callBack(options.id)
+            options.callBack(options.id);
         },
         btn2: function () {
             if (options.callBack2 != null)
-                options.callBack2(options.id)
+                options.callBack2(options.id);
             else
                 return true
         }, cancel: function () {
@@ -211,9 +211,6 @@ $.submitForm = function (options) {
     var options = $.extend(defaults, options);
     $.loading(true, options.loading);
     window.setTimeout(function () {
-        if ($('[name=__RequestVerificationToken]').length > 0) {
-            options.param["__RequestVerificationToken"] = $('[name=__RequestVerificationToken]').val();
-        }
         $.ajax({
             url: options.url,
             data: options.param,
@@ -253,9 +250,6 @@ $.deleteForm = function (options) {
         close: true
     };
     var options = $.extend(defaults, options);
-    //if ($('[name=__RequestVerificationToken]').length > 0) {
-    //    options.param["__RequestVerificationToken"] = $('[name=__RequestVerificationToken]').val();
-    //}
     $.modalConfirm(options.prompt, function (r) {
         if (r) {
             $.loading(true, options.loading);
@@ -379,9 +373,6 @@ $.fn.formSerialize = function (formdate) {
                 break;
         }
     });
-    //if ($('[name=__RequestVerificationToken]').length > 0) {
-    //    postdata["__RequestVerificationToken"] = $('[name=__RequestVerificationToken]').val();
-    //}
     return postdata;
 };
 $.fn.bindSelect = function (options) {
@@ -427,7 +418,7 @@ $.fn.bindSelect = function (options) {
     }
 }
 $.fn.authorizeButton = function () {
-    var moduleId = top.$(".SAAS_iframe:visible").attr("id").substr(6);
+    var moduleId = top.$(".J_iframe:visible").attr("id").substr(6);
     var dataJson = top.clients.authorizeButton[moduleId];
     var $element = $(this);
     $element.find('a[authorize=yes]').attr('authorize', 'no');

@@ -75,7 +75,6 @@
   <ItemGroup>
     <Content Include="Content\css\animate.min.css" />
     <Content Include="Content\css\bootstrap.min.css" />
-    <Content Include="Content\css\demo\webuploader-demo.min.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\framework-ui.css" />
     <Content Include="Content\css\login.min.css" />
@@ -162,6 +161,7 @@
     <Content Include="Content\img\index.jpg" />
     <Content Include="Content\img\index_4.jpg" />
     <Content Include="Content\img\loading-upload.gif" />
+    <Content Include="Content\img\loading.gif" />
     <Content Include="Content\img\locked.png" />
     <Content Include="Content\img\login-background.jpg" />
     <Content Include="Content\img\p1.jpg" />
@@ -181,18 +181,6 @@
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\contabs.min.js" />
     <Content Include="Content\js\content.min.js" />
-    <Content Include="Content\js\demo\bootstrap-table-demo.min.js" />
-    <Content Include="Content\js\demo\echarts-demo.min.js" />
-    <Content Include="Content\js\demo\flot-demo.min.js" />
-    <Content Include="Content\js\demo\form-advanced-demo.min.js" />
-    <Content Include="Content\js\demo\form-validate-demo.min.js" />
-    <Content Include="Content\js\demo\layer-demo.min.js" />
-    <Content Include="Content\js\demo\morris-demo.min.js" />
-    <Content Include="Content\js\demo\peity-demo.min.js" />
-    <Content Include="Content\js\demo\rickshaw-demo.min.js" />
-    <Content Include="Content\js\demo\sparkline-demo.min.js" />
-    <Content Include="Content\js\demo\treeview-demo.min.js" />
-    <Content Include="Content\js\demo\webuploader-demo.min.js" />
     <Content Include="Content\js\framework-ui.js" />
     <Content Include="Content\js\hplus.min.js" />
     <Content Include="Content\js\jquery-ui-1.10.4.min.js" />
@@ -312,7 +300,6 @@
     <Compile Include="Modules\CategoryModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Modules\LoginModule.cs" />
-    <Compile Include="Modules\ModuleModule.cs" />
     <Compile Include="Modules\NodeModule.cs" />
     <Compile Include="Modules\PerformsModule.cs" />
     <Compile Include="Modules\TaskModule.cs" />
@@ -358,7 +345,6 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Task\Index.cshtml" />
-    <Content Include="Views\Module\Index.cshtml" />
     <None Include="Properties\PublishProfiles\PH.TASK.pubxml" />
     <Content Include="Views\Node\Index.cshtml" />
     <Content Include="Views\Performs\Node.cshtml" />
@@ -366,6 +352,7 @@
     <Content Include="Views\User\Form.cshtml" />
     <Content Include="Views\Index.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Form.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
