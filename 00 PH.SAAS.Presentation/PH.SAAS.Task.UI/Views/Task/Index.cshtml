@@ -129,16 +129,17 @@
                                 label: '操作',
                                 name: 'operate',
                                 align: 'center',
-                                width: "200",
+                                width: "250",
                                 sortable: false,
                                 formatter: function (cellvalue, options, rowObject) {
                                     var html = [];
                                     if (rowObject.taskState)
-                                        html.push('<button class="btn-xs btn-default" type="button"><i class="fa fa-stop"></i>&nbsp;停止</button>');
+                                        html.push('<a class="btn-sm btn-default" onclick=\"$.taskIndex.startOrStopTask(' + rowObject.taskId + ',' + rowObject.taskState + ');\"><i class="fa fa-stop"></i>&nbsp;停止</a>');
                                     else
-                                        html.push('<button class="btn-xs btn-success" type="button"><i class="fa fa-play"></i>&nbsp;启动</button>');
-                                    html.push('<button class="btn-xs btn-warning" type="button"><i class="fa fa-institution"></i>&nbsp;卸载</button>');
-                                    html.push('<button type="button" class="btn-xs btn-info"><i class="fa fa-file-text"></i>&nbsp;日志</button>');
+                                        html.push('<a class="btn-sm btn-success" onclick=\"$.taskIndex.startOrStopTask(' + rowObject.taskId + ',' + rowObject.taskState + ');\"><i class="fa fa-play"></i>&nbsp;启动</a>');
+                                    html.push('<a class="btn-sm btn-warning" onclick=\"$.taskIndex.unInstallTask(' + rowObject.taskId + ');\"><i class="fa fa-institution"></i>&nbsp;卸载</a>');
+                                    html.push('<a class="btn-sm btn-info"><i class="fa fa-file-text"></i>&nbsp;日志</a>');
+                                    html.push('<a class="btn-sm btn-primary"><i class="fa fa-file-text"></i>&nbsp;查看</a>');
                                     return html.join(" ");
                                 }
                             }
@@ -203,6 +204,22 @@
                         success: function () {
                             $.currentWindow().$("#grid").trigger("reloadGrid");
                         }
+                    });
+                },
+                startOrStopTask:function(_taskId,_status) {
+                    if (_status) {
+                        $.modalConfirm("确定停止任务", function() {
+
+                        });
+                    } else {
+                        $.modalConfirm("确定启动任务", function () {
+
+                        });
+                    }
+                },
+                unInstallTask:function(_taskId) {
+                    $.modalConfirm("确定卸载任务", function () {
+
                     });
                 }
             };

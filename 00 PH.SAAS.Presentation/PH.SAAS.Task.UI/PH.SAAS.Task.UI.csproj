@@ -313,8 +313,10 @@
     <Compile Include="Modules\BaseModule.cs" />
     <Compile Include="Modules\CategoryModule.cs" />
     <Compile Include="Modules\CommandModule.cs" />
+    <Compile Include="Modules\ErrorLogModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Modules\LoginModule.cs" />
+    <Compile Include="Modules\LogModule.cs" />
     <Compile Include="Modules\NodeModule.cs" />
     <Compile Include="Modules\PerformsModule.cs" />
     <Compile Include="Modules\TaskModule.cs" />

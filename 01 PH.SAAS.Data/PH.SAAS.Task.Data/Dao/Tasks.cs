@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using DapperExtensions;
+using PH.SAAS.Task.Core;
 using PH.SAAS.Task.Models;
 using PH.SAAS.Task.Models.QueryModel;
 using PH.SAAS.Task.Models.ViewModel;
@@ -18,11 +19,14 @@ namespace PH.SAAS.Task.Data.Dao
             {
                 if (task.TaskId.HasValue)
                 {
+                    #region 编辑任务
                     task.LastUpdTime = DateTime.Now;
                     return client.Update(task);
+                    #endregion
                 }
                 else
                 {
+                    #region 新增任务
                     var flag = false;
                     try
                     {
@@ -34,12 +38,13 @@ namespace PH.SAAS.Task.Data.Dao
                         if (taskId != null)
                         {
                             //version
-                            //var versionId = client.Insert(new t_Version
-                            //{
-                            //    TaskId = taskId,
-                            //    Versino = 1,
-                            //    ZipFileName = "debug.zip"
-                            //});
+                            var versionId = client.Insert(new t_Version
+                            {
+                                TaskId = taskId,
+                                Versino = 1,
+                                ZipFileName = mtask.ZipFile,
+                                ZipFile = IOHelper.FileToByte(mtask.ZipFile)
+                            });
                             //tempdata
                             var tempId = client.Insert(new t_TempData
                             {
@@ -56,6 +61,7 @@ namespace PH.SAAS.Task.Data.Dao
                         throw ex;
                     }
                     return flag;
+                    #endregion
                 }
             });
         }
