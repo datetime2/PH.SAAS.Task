@@ -47,6 +47,18 @@ namespace PH.SAAS.Task.Data
             }
         }
         /// <summary>
+        /// FindBy
+        /// </summary>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        protected IEnumerable<dynamic> FindBy(Func<IDatabase, IEnumerable<dynamic>> func)
+        {
+            using (var client = DbFactory.CreateDb(DbType.MySql))
+            {
+                return func(client);
+            }
+        }
+        /// <summary>
         /// Pager
         /// </summary>
         /// <param name="func"></param>

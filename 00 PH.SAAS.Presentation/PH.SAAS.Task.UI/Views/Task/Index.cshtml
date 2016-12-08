@@ -4,7 +4,7 @@
             <a class="btn btn-primary" onclick="$.reload()"><span class="glyphicon glyphicon-refresh"></span></a>
         </div>
         <div class="btn-group">
-            <a id="add" authorize="yes" class="btn btn-primary dropdown-text" onclick="$.taskIndex.addManage()"><i class="fa fa-plus"></i>新建用户</a>
+            <a id="add" authorize="yes" class="btn btn-primary dropdown-text" onclick="$.taskIndex.addTask()"><i class="fa fa-plus"></i>新建任务</a>
         </div>
     </div>
     <div class="search">
@@ -12,7 +12,7 @@
             <tr>
                 <td>
                     <div class="input-group">
-                        <input id="txt_keyword" type="text" class="form-control" placeholder="账户/真实姓名" style="width: 200px;">
+                        <input id="txt_keyword" type="text" class="form-control" placeholder="任务名称" style="width: 200px;">
                         <span class="input-group-btn">
                             <button id="btn_search" type="button" class="btn  btn-primary"><i class="fa fa-search"></i></button>
                         </span>
@@ -43,14 +43,15 @@
                         url: "/Task/List",
                         height: $(window).height() - 128,
                         colModel: [
-                            { label: '主键', name: 'userId', align: 'center' },
-                            { label: '账户', name: 'userName',  align: 'center' },
-                            { label: '真实姓名', name: 'realName',  align: 'center' },
+                            { label: '主键', name: 'taskId', align: 'center', width: "80" },
+                            { label: '任务名称', name: 'taskName', align: 'center', width: "100" },
+                            { label: '执行频率', name: 'taskCron', align: 'center', width: "100" },
                             {
                                 label: '创建时间',
                                 name: 'createTime',
                                 align: 'center',
-                                formatter: function (cellvalue, options, rowObject) {
+                                width: "100",
+                                formatter: function(cellvalue, options, rowObject) {
                                     if (cellvalue != '')
                                         return $.FormatDateBoxFull(cellvalue);
                                     else
@@ -61,7 +62,8 @@
                                 label: '修改时间',
                                 name: 'lastUpdTime',
                                 align: 'center',
-                                formatter: function (cellvalue, options, rowObject) {
+                                width: "100",
+                                formatter: function(cellvalue, options, rowObject) {
                                     if (cellvalue != '')
                                         return $.FormatDateBoxFull(cellvalue);
                                     else
@@ -69,17 +71,69 @@
                                 }
                             },
                             {
-                                label: "允许登录",
-                                name: "isEnabled",
-                                align: "center",
-                                formatter: function (cellvalue, options, rowObject) {
-                                    if (cellvalue == 0)
-                                        return '<span class=\"label label-success\">正常</span>';
+                                label: '最后启动时间',
+                                name: 'taskLastStartTime',
+                                align: 'center',
+                                width: "100",
+                                formatter: function(cellvalue, options, rowObject) {
+                                    if (cellvalue != '')
+                                        return $.FormatDateBoxFull(cellvalue);
                                     else
-                                        return '<span class=\"label label-default\">禁用</span>';
+                                        return cellvalue;
                                 }
                             },
-                            { label: '备注', name: 'remark', align: 'left' }
+                            {
+                                label: '最后停止时间',
+                                name: 'taskLastEndTime',
+                                align: 'center',
+                                width: "100",
+                                formatter: function(cellvalue, options, rowObject) {
+                                    if (cellvalue != '')
+                                        return $.FormatDateBoxFull(cellvalue);
+                                    else
+                                        return cellvalue;
+                                }
+                            },
+                            {
+                                label: '最后执行出错时间',
+                                name: 'taskLastErrorTime',
+                                align: 'center',
+                                width: "120",
+                                formatter: function(cellvalue, options, rowObject) {
+                                    if (cellvalue != '')
+                                        return $.FormatDateBoxFull(cellvalue);
+                                    else
+                                        return cellvalue;
+                                }
+                            },
+                            { label: '运行次数', name: 'taskRunCount', align: 'center', width: "100" },
+                            { label: '连续出错次数', name: 'taskErrorCount', align: 'center', width: "100" },
+                            {
+                                label: "任务状态",
+                                name: "taskState",
+                                align: "center",
+                                width: "100",
+                                formatter: function(cellvalue, options, rowObject) {
+                                    if (cellvalue == 0)
+                                        return '<span class=\"label label-success\">启动</span>';
+                                    else
+                                        return '<span class=\"label label-default\">停止</span>';
+                                }
+                            },
+                            { label: '备注', name: 'taskRemark', align: 'left', width: "150" },
+                            {
+                                label: '操作',
+                                name: 'taskOperate',
+                                align: 'center',
+                                width: "200",
+                                sortable:false,
+                                formatter: function(cellvalue, options, rowObject) {
+                                    if (cellvalue == 0)
+                                        return '<span class=\"label label-success\">启动</span>';
+                                    else
+                                        return '<span class=\"label label-default\">停止</span>';
+                                }
+                            }
                         ],
                         pager: "#gridPager",
                         sortname: 'TaskId',
@@ -91,19 +145,19 @@
                         }).trigger('reloadGrid');
                     });
                 },
-                addManage: function () {
+                addTask: function () {
                     $.modalOpen({
                         id: "Form",
                         title: "新增任务",
                         url: "/Task/Form",
-                        width: "500px",
-                        height: "400px",
+                        width: "600px",
+                        height: "550px",
                         callBack: function (iframeId) {
                             top.frames[iframeId].$.taskForm.submitForm();
                         }
                     });
                 },
-                editManage: function () {
+                editTask: function () {
                     var keyValue = $("#grid").jqGridRowValue().Id;
                     if (!keyValue) {
                         $.UnChecked();
@@ -111,16 +165,16 @@
                     }
                     $.modalOpen({
                         id: "Form",
-                        title: "修改用户",
+                        title: "修改任务",
                         url: "/Task/Form?keyValue=" + keyValue,
-                        width: "500px",
-                        height: "400px",
+                        width: "600px",
+                        height: "550px",
                         callBack: function (iframeId) {
                             top.frames[iframeId].$.taskForm.submitForm();
                         }
                     });
                 },
-                removeManage: function () {
+                removeTask: function () {
                     if (!$("#grid").jqGridRowValue().Id) {
                         $.UnChecked();
                         return;

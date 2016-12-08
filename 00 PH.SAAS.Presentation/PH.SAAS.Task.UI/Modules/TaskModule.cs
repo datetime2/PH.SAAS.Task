@@ -18,19 +18,19 @@ namespace PH.SAAS.Task.UI.Modules
             Get["/List"] = paramsters =>
             {
                 var query = this.Bind<jqGridBaseQueryModel>();
-                var cateService = new Category();
-                return Response.AsJson(cateService.PageCategory(query));
+                var cateService = new Tasks();
+                return Response.AsJson(cateService.PageTask(query));
             };
             Post["/SubmitForm"] = parameters =>
             {
-                var cate = this.Bind<t_Categories>();
-                var cateService = new Category();
+                var cate = this.Bind<t_Tasks>();
+                var cateService = new Tasks();
                 return cateService.SaveForm(cate) ? Success("操作成功") : Error("操作失败");
             };
             Get["/InitForm"] = paramsters =>
             {
                 var post = this.Bind<EditPostForm>();
-                var cateService = new Category();
+                var cateService = new Tasks();
                 return Response.AsJson(cateService.InitForm(post.keyValue));
             };
         }

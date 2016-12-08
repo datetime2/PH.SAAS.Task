@@ -53,5 +53,16 @@ namespace PH.SAAS.Task.Data.Dao
                 return grid;
             });
         }
+        public IEnumerable<dynamic> NodeSelect()
+        {
+            return FindBy((client) =>
+            {
+                return client.GetList<t_Nodes>().Select(s => new
+                {
+                    id = s.NodeId,
+                    text = s.NodesName
+                });
+            });
+        }
     }
 }

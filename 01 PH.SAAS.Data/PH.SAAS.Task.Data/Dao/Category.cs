@@ -54,5 +54,17 @@ namespace PH.SAAS.Task.Data.Dao
                 return grid;
             });
         }
+
+        public IEnumerable<dynamic> CategortSelect()
+        {
+            return FindBy((client) =>
+            {
+                return client.GetList<t_Categories>().Select(s => new
+                {
+                    id = s.CategoryId,
+                    text = s.CategoryName
+                });
+            });
+        }
     }
 }

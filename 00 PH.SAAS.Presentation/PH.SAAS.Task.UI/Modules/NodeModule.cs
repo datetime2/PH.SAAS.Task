@@ -33,6 +33,11 @@ namespace PH.SAAS.Task.UI.Modules
                 var nodeService = new Node();
                 return Response.AsJson(nodeService.InitForm(post.keyValue));
             };
+            Get["/InitNode"] = p =>
+            {
+                var cateService = new Node();
+                return Response.AsJson(cateService.NodeSelect());
+            };
         }
     }
 }

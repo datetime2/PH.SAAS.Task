@@ -34,6 +34,12 @@ namespace PH.SAAS.Task.UI.Modules
                 var cateService = new Category();
                 return Response.AsJson(cateService.InitForm(post.keyValue));
             };
+
+            Get["/InitCategory"] = p =>
+            {
+                var cateService = new Category();
+                return Response.AsJson(cateService.CategortSelect());
+            };
         }
     }
 }

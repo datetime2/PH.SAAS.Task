@@ -8,7 +8,7 @@ using PH.SAAS.Task.Models.ViewModel;
 
 namespace PH.SAAS.Task.Data.Dao
 {
-    public class Task:DbAccess<t_Tasks>
+    public class Tasks:DbAccess<t_Tasks>
     {
         public bool SaveForm(t_Tasks task)
         {
