@@ -1,9 +1,11 @@
 ﻿@section styles{
     <link href="~/Content/css/framework-ui.css" rel="stylesheet" />
+    <link href="~/Content/js/plugins/select2/select2.min.css" rel="stylesheet" />
 }
 @section scripts{
     <script src="~/Content/js/plugins/validate/jquery.validate.min.js"></script>
     <script src="~/Content/js/plugins/jquery/jquery.form.js"></script>
+    <script src="~/Content/js/plugins/select2/select2.min.js"></script>
     <script src="~/Content/js/framework-ui.js"></script>
     <script>
         var keyValue = $.request("keyValue");
@@ -16,16 +18,12 @@
                     $("#categoryId").bindSelect({
                         url: "/Category/InitCategory",
                         id: "id",
-                        text: "text",
-                        tags: true,
-                        maxselectlength: 1
+                        text: "text"
                     });
                     $("#nodeId").bindSelect({
                         url: "/Node/InitNode",
                         id: "id",
-                        text: "text",
-                        tags: true,
-                        maxselectlength: 1
+                        text: "text"
                     });
                     if (!!keyValue) {
                         $.ajax({
@@ -73,13 +71,13 @@
                 <tr>
                     <th class="formTitle">分类</th>
                     <td class="formValue">
-                        <select id="categoryId" name="categoryId" class="form-control select2 required">
+                        <select type="select" id="categoryId" name="categoryId" class="form-control select2 required">
                             <option value="">--请选择--</option>
                         </select>
                     </td>
                     <th class="formTitle">节点</th>
                     <td class="formValue">
-                        <select id="nodeId" name="nodeId" class="form-control select2 required">
+                        <select type="select" id="nodeId" name="nodeId" class="form-control select2 required">
                             <option value="">--请选择--</option>
                         </select>
                     </td>
@@ -89,7 +87,7 @@
                         任务配置
                     </th>
                     <td class="formValue" colspan="3">
-                        <textarea id="taskAppConfigJson" name="taskAppConfigJson" class="form-control" style="height: 40px;"></textarea>
+                        <textarea type="textarea" id="taskAppConfigJson" name="taskAppConfigJson" class="form-control" style="height: 40px;"></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -97,7 +95,7 @@
                         临时数据库
                     </th>
                     <td class="formValue" colspan="3">
-                        <textarea id="taskTempDataJson" name="taskTempDataJson" class="form-control" style="height: 40px;"></textarea>
+                        <textarea type="textarea" id="taskTempDataJson" name="taskTempDataJson" class="form-control" style="height: 40px;"></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -129,7 +127,7 @@
                         备注
                     </th>
                     <td class="formValue" colspan="3">
-                        <textarea id="taskRemark" name="taskRemark" class="form-control" style="height: 60px;"></textarea>
+                        <textarea type="textarea" id="taskRemark" name="taskRemark" class="form-control" style="height: 60px;"></textarea>
                     </td>
                 </tr>
             </table>

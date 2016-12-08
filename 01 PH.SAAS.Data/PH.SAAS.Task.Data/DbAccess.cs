@@ -71,6 +71,18 @@ namespace PH.SAAS.Task.Data
             }
         }
         /// <summary>
+        /// Pager
+        /// </summary>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        protected jqGridPagerViewModel<dynamic> Pager(Func<IDatabase, jqGridPagerViewModel<dynamic>> func)
+        {
+            using (var client = DbFactory.CreateDb(DbType.MySql))
+            {
+                return func(client);
+            }
+        }
+        /// <summary>
         /// FirstOrDefault
         /// </summary>
         /// <param name="func"></param>

@@ -41,8 +41,15 @@
   <ItemGroup>
     <Compile Include="Model\t_BaseEntity.cs" />
     <Compile Include="Model\t_Categories.cs" />
+    <Compile Include="Model\t_Command.cs" />
+    <Compile Include="Model\t_Config.cs" />
+    <Compile Include="Model\t_ErrorLog.cs" />
+    <Compile Include="Model\t_Log.cs" />
     <Compile Include="Model\t_Nodes.cs" />
+    <Compile Include="Model\t_Performs.cs" />
     <Compile Include="Model\t_Tasks.cs" />
+    <Compile Include="Model\t_TempData.cs" />
+    <Compile Include="Model\t_Version.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\t_Users.cs" />
     <Compile Include="QueryModel\jqGridBaseQueryModel.cs" />

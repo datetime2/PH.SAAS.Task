@@ -419,20 +419,6 @@ $.fn.bindSelect = function (options) {
         });
     }
 }
-$.fn.authorizeButton = function () {
-    var moduleId = top.$(".J_iframe:visible").attr("id").substr(6);
-    var dataJson = top.clients.authorizeButton[moduleId];
-    var $element = $(this);
-    $element.find('a[authorize=yes]').attr('authorize', 'no');
-    if (dataJson != undefined) {
-        $.each(dataJson, function (i) {
-            $element.find("#" + dataJson[i].F_EnCode).attr('authorize', 'yes');
-        });
-    }
-    $element.find("[authorize=no]").parents('li').prev('.split').remove();
-    $element.find("[authorize=no]").parents('li').remove();
-    $element.find('[authorize=no]').remove();
-}
 $.fn.dataGrid = function (options) {
     var defaults = {
         datatype: "json",
@@ -445,26 +431,7 @@ $.fn.dataGrid = function (options) {
         gridComplete:null
     };
     var options = $.extend(defaults, options);
-    var $element = $(this);
-    options["onSelectRow"] = function (rowid) {
-        if (!options.isonselectrow) { return; }
-        var length = $(this).jqGrid("getGridParam", "selrow").length;
-        if (options.isoperate) {
-            $('.nav-pills').html($(this).jqGridRowValue().op);
-        }
-        var $operate = $(".operate");
-        if (length > 0) {
-            $operate.animate({ "left": 0 }, 200);
-        } else {
-            $operate.animate({ "left": '-100.1%' }, 200);
-        }
-        $operate.find('.close').click(function () {
-            $operate.animate({ "left": '-100.1%' }, 200);
-        });
-    };
-
-    $element.jqGrid(options);
-
+    $(this).jqGrid(options);
 };
 $.ajaxRequest = function (option) {
     $.ajax({

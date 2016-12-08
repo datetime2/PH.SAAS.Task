@@ -20,16 +20,21 @@ namespace PH.SAAS.Task.Data.Dao
                     return client.Update(task);
                 }
                 else
+                {
+                    task.TaskLastEndTime = null;
+                    task.TaskLastErrorTime = null;
+                    task.TaskLastStartTime = null;
                     return client.Insert(task) > 0;
+                }
             });
         }
         public t_Tasks InitForm(int keyValue)
         {
             return FirstOrDefault((client) => client.Get<t_Tasks>(keyValue));
         }
-        public jqGridPagerViewModel<t_Tasks> PageTask(jqGridBaseQueryModel query)
+        public jqGridPagerViewModel<dynamic> PageTask(jqGridBaseQueryModel query)
         {
-            var grid = new jqGridPagerViewModel<t_Tasks>()
+            var grid = new jqGridPagerViewModel<dynamic>()
             {
                 page = query.page,
                 size = query.rows
@@ -49,7 +54,24 @@ namespace PH.SAAS.Task.Data.Dao
             return Pager((client) =>
             {
                 grid.records = client.Count<t_Tasks>(predGroup);
-                grid.rows = client.GetPage<t_Tasks>(predGroup, sort, query.page - 1, query.rows);
+                grid.rows = client.GetPage<t_Tasks>(predGroup, sort, query.page - 1, query.rows).Select(s => new
+                {
+                    taskId = s.TaskId,
+                    taskName = s.TaskName,
+                    categoryId = s.CategoryId,
+                    nodeId = s.NodeId,
+                    taskLastStartTime = s.TaskLastStartTime,
+                    taskLastEndTime = s.TaskLastEndTime,
+                    taskLastErrorTime = s.TaskLastErrorTime,
+                    taskErrorCount = s.TaskErrorCount,
+                    taskRunCount = s.TaskRunCount,
+                    taskCron = s.TaskCron,
+                    taskState = s.TaskState,
+                    taskOperate = s.TaskState,
+                    taskRemark = s.TaskRemark,
+                    createTime = s.CreateTime,
+                    lastUpdTime = s.LastUpdTime
+                });
                 return grid;
             });
         }

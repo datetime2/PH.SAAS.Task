@@ -8,9 +8,9 @@ namespace PH.SAAS.Task.Models
         public string TaskName { get; set; }
         public int CategoryId { get; set; }
         public int NodeId { get; set; }
-        public DateTime TaskLastStartTime { get; set; }
-        public DateTime TaskLastEndTime { get; set; }
-        public DateTime TaskLastErrorTime { get; set; }
+        public DateTime? TaskLastStartTime { get; set; }
+        public DateTime? TaskLastEndTime { get; set; }
+        public DateTime? TaskLastErrorTime { get; set; }
         public int TaskErrorCount { get; set; }
         public int TaskRunCount { get; set; }
         public int TaskCreateUserId { get; set; }

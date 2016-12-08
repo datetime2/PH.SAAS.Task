@@ -278,6 +278,8 @@
     <Content Include="Content\js\plugins\prettyfile\bootstrap-prettyfile.js" />
     <Content Include="Content\js\plugins\rickshaw\rickshaw.min.js" />
     <Content Include="Content\js\plugins\rickshaw\vendor\d3.v3.js" />
+    <Content Include="Content\js\plugins\select2\select2.min.css" />
+    <Content Include="Content\js\plugins\select2\select2.min.js" />
     <Content Include="Content\js\plugins\simditor\hotkeys.js" />
     <Content Include="Content\js\plugins\simditor\module.js" />
     <Content Include="Content\js\plugins\simditor\simditor.js" />
