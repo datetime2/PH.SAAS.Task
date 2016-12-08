@@ -23,7 +23,7 @@ namespace PH.SAAS.Task.UI.Modules
             };
             Post["/SubmitForm"] = parameters =>
             {
-                var cate = this.Bind<t_Tasks>();
+                var cate = this.Bind<t_M_Tasks>();
                 var cateService = new Tasks();
                 return cateService.SaveForm(cate) ? Success("操作成功") : Error("操作失败");
             };

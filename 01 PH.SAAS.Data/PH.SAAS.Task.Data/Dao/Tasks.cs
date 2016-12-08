@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using DapperExtensions;
 using PH.SAAS.Task.Models;
 using PH.SAAS.Task.Models.QueryModel;
@@ -8,10 +9,11 @@ using PH.SAAS.Task.Models.ViewModel;
 
 namespace PH.SAAS.Task.Data.Dao
 {
-    public class Tasks:DbAccess<t_Tasks>
+    public class Tasks : DbAccess<t_Tasks>
     {
-        public bool SaveForm(t_Tasks task)
+        public bool SaveForm(t_M_Tasks mtask)
         {
+            var task = Mapper.Map<t_M_Tasks, t_Tasks>(mtask);
             return Commit((client) =>
             {
                 if (task.TaskId.HasValue)
@@ -21,10 +23,39 @@ namespace PH.SAAS.Task.Data.Dao
                 }
                 else
                 {
-                    task.TaskLastEndTime = null;
-                    task.TaskLastErrorTime = null;
-                    task.TaskLastStartTime = null;
-                    return client.Insert(task) > 0;
+                    var flag = false;
+                    try
+                    {
+                        client.BeginTransaction();
+                        task.TaskLastEndTime = null;
+                        task.TaskLastErrorTime = null;
+                        task.TaskLastStartTime = null;
+                        var taskId = client.Insert(task);
+                        if (taskId != null)
+                        {
+                            //version
+                            //var versionId = client.Insert(new t_Version
+                            //{
+                            //    TaskId = taskId,
+                            //    Versino = 1,
+                            //    ZipFileName = "debug.zip"
+                            //});
+                            //tempdata
+                            var tempId = client.Insert(new t_TempData
+                            {
+                                TaskId = taskId,
+                                TempDataJson = mtask.TempDataJson
+                            });
+                            flag = tempId > 0;
+                            client.Commit();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        client.Rollback();
+                        throw ex;
+                    }
+                    return flag;
                 }
             });
         }

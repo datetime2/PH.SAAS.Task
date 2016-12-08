@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Nancy">
       <HintPath>..\..\packages\Nancy.1.4.3\lib\net40\Nancy.dll</HintPath>
@@ -298,10 +302,14 @@
     <Content Include="Content\js\plugins\validate\messages_zh.min.js" />
     <Content Include="Content\js\plugins\webuploader\webuploader.min.js" />
     <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="Config\log4net.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Modules\BaseModule.cs" />
     <Compile Include="Modules\CategoryModule.cs" />
     <Compile Include="Modules\CommandModule.cs" />

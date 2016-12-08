@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapper\t_M_Tasks.cs" />
     <Compile Include="Model\t_BaseEntity.cs" />
     <Compile Include="Model\t_Categories.cs" />
     <Compile Include="Model\t_Command.cs" />
