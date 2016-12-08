@@ -1,0 +1,72 @@
+﻿@section styles{
+
+    <link href="~/Content/css/framework-ui.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Content/js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="~/Content/js/plugins/jquery/jquery.form.js"></script>
+    <script src="~/Content/js/framework-ui.js"></script>
+    <script>
+        var keyValue = $.request("keyValue");
+        $(function () {
+            if (!!keyValue) {
+                $.nodeFrom.initForm();
+            }
+        });
+        (function ($) {
+            $.nodeFrom = {
+                initForm: function () {
+                    $.ajax({
+                        url: "/Node/InitForm",
+                        data: { "keyValue": keyValue },
+                        dataType: "json",
+                        async: false,
+                        success: function (data) {
+                            $("#form1").formSerialize(data);
+                        }
+                    });
+                },
+                submitForm: function () {
+                    if (!$('#form1').formValid())
+                        return false;
+                    var postdata = $("#form1").formSerialize();
+                    $.submitForm({
+                        url: "/Node/SubmitForm",
+                        param: postdata,
+                        success: function () {
+                            $.currentWindow().$("#grid").trigger("reloadGrid");
+                        }
+                    });
+                }
+            };
+        })(jQuery);
+    </script>}
+<form id="form1">
+    <div style="margin-top: 10px; margin-left: 10px; margin-right: 10px;">
+        <div style="padding-top: 20px; margin-right: 30px;">
+            <table class="form">
+                <tr>
+                    <th class="formTitle">节点名称</th>
+                    <td class="formValue">
+                        <input id="nodesName" name="nodesName" type="text" class="form-control required" />
+                        <input id="nodeId" name="nodeId" type="hidden" class="form-control"/>
+                        <input id="createTime" name="createTime" type="hidden" class="form-control"/>
+                    </td>
+                    <th class="formTitle">IP地址</th>
+                    <td class="formValue">
+                        <input id="nodeIp" name="nodeIp" type="text" class="form-control required"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="formTitle">检查状态</th>
+                    <td class="formValue" colspan="3">
+                        <div class="ckbox">
+                            <input id="checkState" name="checkState" type="checkbox"><label for="CheckState">检查状态</label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</form>
+
