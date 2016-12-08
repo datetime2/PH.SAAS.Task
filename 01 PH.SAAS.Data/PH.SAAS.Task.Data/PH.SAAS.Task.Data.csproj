@@ -53,9 +53,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao\Category.cs" />
+    <Compile Include="Dao\Command.cs" />
+    <Compile Include="Dao\Configs.cs" />
+    <Compile Include="Dao\ErrorLog.cs" />
+    <Compile Include="Dao\Logs.cs" />
     <Compile Include="Dao\Node.cs" />
+    <Compile Include="Dao\Performs.cs" />
     <Compile Include="Dao\Tasks.cs" />
+    <Compile Include="Dao\TempData.cs" />
     <Compile Include="Dao\Users.cs" />
+    <Compile Include="Dao\Version.cs" />
     <Compile Include="DbAccess.cs" />
     <Compile Include="GlobalVariables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

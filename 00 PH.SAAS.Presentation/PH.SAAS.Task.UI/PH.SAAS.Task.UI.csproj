@@ -304,6 +304,7 @@
   <ItemGroup>
     <Compile Include="Modules\BaseModule.cs" />
     <Compile Include="Modules\CategoryModule.cs" />
+    <Compile Include="Modules\CommandModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Modules\LoginModule.cs" />
     <Compile Include="Modules\NodeModule.cs" />
@@ -361,6 +362,7 @@
     <Content Include="Views\Category\Form.cshtml" />
     <Content Include="Views\Node\Form.cshtml" />
     <Content Include="Views\Task\Form.cshtml" />
+    <Content Include="Views\Command\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
