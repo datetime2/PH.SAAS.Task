@@ -8,35 +8,35 @@ using PH.SAAS.Task.Models.ViewModel;
 
 namespace PH.SAAS.Task.Data.Dao
 {
-    public class Node : DbAccess<t_Nodes>
+    public class Task:DbAccess<t_Tasks>
     {
-        public bool SaveForm(t_Nodes node)
+        public bool SaveForm(t_Tasks task)
         {
             return Commit((client) =>
             {
-                if (node.NodeId.HasValue)
+                if (task.TaskId.HasValue)
                 {
-                    node.LastUpdTime = DateTime.Now;
-                    return client.Update(node);
+                    task.LastUpdTime = DateTime.Now;
+                    return client.Update(task);
                 }
                 else
-                    return client.Insert(node) > 0;
+                    return client.Insert(task) > 0;
             });
         }
-        public t_Nodes InitForm(int keyValue)
+        public t_Tasks InitForm(int keyValue)
         {
-            return FirstOrDefault((client) => client.Get<t_Nodes>(keyValue));
+            return FirstOrDefault((client) => client.Get<t_Tasks>(keyValue));
         }
-        public jqGridPagerViewModel<t_Nodes> PageNode(jqGridBaseQueryModel query)
+        public jqGridPagerViewModel<t_Tasks> PageTask(jqGridBaseQueryModel query)
         {
-            var grid = new jqGridPagerViewModel<t_Nodes>()
+            var grid = new jqGridPagerViewModel<t_Tasks>()
             {
                 page = query.page,
                 size = query.rows
             };
             IList<IPredicate> predList = new List<IPredicate>();
             if (!string.IsNullOrEmpty(query.keyword))
-                predList.Add(Predicates.Field<t_Nodes>(p => p.NodesName, Operator.Like, query.keyword));
+                predList.Add(Predicates.Field<t_Tasks>(p => p.TaskName, Operator.Like, query.keyword));
             var predGroup = Predicates.Group(GroupOperator.And, predList.ToArray());
             var sort = new List<ISort>
             {
@@ -48,8 +48,8 @@ namespace PH.SAAS.Task.Data.Dao
             };
             return Pager((client) =>
             {
-                grid.records = client.Count<t_Nodes>(predGroup);
-                grid.rows = client.GetPage<t_Nodes>(predGroup, sort, query.page - 1, query.rows);
+                grid.records = client.Count<t_Tasks>(predGroup);
+                grid.rows = client.GetPage<t_Tasks>(predGroup, sort, query.page - 1, query.rows);
                 return grid;
             });
         }

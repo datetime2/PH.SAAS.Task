@@ -357,6 +357,7 @@
     <Content Include="Views\Index.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Category\Form.cshtml" />
+    <Content Include="Views\Node\Form.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
