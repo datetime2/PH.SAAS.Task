@@ -137,7 +137,7 @@
                                         html.push('<a class="btn-sm btn-default" onclick=\"$.taskIndex.startOrStopTask(' + rowObject.taskId + ',' + rowObject.taskState + ');\"><i class="fa fa-stop"></i>&nbsp;停止</a>');
                                     else
                                         html.push('<a class="btn-sm btn-success" onclick=\"$.taskIndex.startOrStopTask(' + rowObject.taskId + ',' + rowObject.taskState + ');\"><i class="fa fa-play"></i>&nbsp;启动</a>');
-                                    html.push('<a class="btn-sm btn-warning" onclick=\"$.taskIndex.unInstallTask(' + rowObject.taskId + ');\"><i class="fa fa-institution"></i>&nbsp;卸载</a>');
+                                    //html.push('<a class="btn-sm btn-warning" onclick=\"$.taskIndex.unInstallTask(' + rowObject.taskId + ');\"><i class="fa fa-institution"></i>&nbsp;卸载</a>');
                                     html.push('<a class="btn-sm btn-info"><i class="fa fa-file-text"></i>&nbsp;日志</a>');
                                     html.push('<a class="btn-sm btn-primary"><i class="fa fa-file-text"></i>&nbsp;查看</a>');
                                     return html.join(" ");

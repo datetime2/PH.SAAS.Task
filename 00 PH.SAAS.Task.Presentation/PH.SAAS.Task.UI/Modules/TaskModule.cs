@@ -29,10 +29,10 @@ namespace PH.SAAS.Task.UI.Modules
             Post["/SubmitForm"] = parameters =>
             {
                 var cate = this.Bind<t_M_Tasks>();
-                cate.RootPath = pathProvider.GetRootPath();
-                cate.ZipFile = cate.TaskFile;
-                cate.FileName = cate.TaskFile.Substring(cate.TaskFile.LastIndexOf('/'),
-                    cate.TaskFile.Length - cate.TaskFile.LastIndexOf('/'));
+                //cate.RootPath = pathProvider.GetRootPath();
+                //cate.ZipFile = cate.TaskFile;
+                //cate.FileName = cate.TaskFile.Substring(cate.TaskFile.LastIndexOf('/'),
+                //    cate.TaskFile.Length - cate.TaskFile.LastIndexOf('/'));
                 var cateService = new Tasks();
                 return cateService.SaveForm(cate) ? Success("操作成功") : Error("操作失败");
             };
