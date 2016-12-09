@@ -21,6 +21,8 @@ namespace PH.SAAS.Task.Models
         public string TaskMainClassDllFileName { get; set; }
         public string TaskMainClassNamespace { get; set; }
         public string TaskRemark { get; set; }
+        public string TaskFile { get; set; }
+
         //public virtual t_Categories category { get; set; }
         //public virtual t_Nodes node { get; set; }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using AutoMapper;
 using DapperExtensions;
 using PH.SAAS.Task.Core;
@@ -34,6 +35,7 @@ namespace PH.SAAS.Task.Data.Dao
                         task.TaskLastEndTime = null;
                         task.TaskLastErrorTime = null;
                         task.TaskLastStartTime = null;
+                        task.TaskVersion = 1;
                         var taskId = client.Insert(task);
                         if (taskId != null)
                         {
@@ -41,9 +43,9 @@ namespace PH.SAAS.Task.Data.Dao
                             var versionId = client.Insert(new t_Version
                             {
                                 TaskId = taskId,
-                                Versino = 1,
-                                ZipFileName = mtask.ZipFile,
-                                ZipFile = IOHelper.FileToByte(mtask.ZipFile)
+                                Version = 1,
+                                ZipFileName = mtask.FileName,
+                                ZipFile = IOHelper.FileToByte(string.Format("{0}{1}", mtask.RootPath, mtask.ZipFile))
                             });
                             //tempdata
                             var tempId = client.Insert(new t_TempData

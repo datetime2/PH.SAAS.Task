@@ -179,6 +179,7 @@
     <Content Include="Content\img\p_big2.jpg" />
     <Content Include="Content\img\p_big3.jpg" />
     <Content Include="Content\img\qr_code.png" />
+    <Content Include="Content\img\skin_icons.png" />
     <Content Include="Content\img\success.png" />
     <Content Include="Content\img\user.png" />
     <Content Include="Content\img\wenku_logo.png" />
@@ -300,6 +301,8 @@
     <Content Include="Content\js\plugins\treeview\bootstrap-treeview.js" />
     <Content Include="Content\js\plugins\validate\jquery.validate.min.js" />
     <Content Include="Content\js\plugins\validate\messages_zh.min.js" />
+    <Content Include="Content\js\plugins\webuploader\saas.uploader.js" />
+    <Content Include="Content\js\plugins\webuploader\uploader.swf" />
     <Content Include="Content\js\plugins\webuploader\webuploader.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

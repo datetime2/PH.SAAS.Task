@@ -7,6 +7,8 @@
     <script src="~/Content/js/plugins/jquery/jquery.form.js"></script>
     <script src="~/Content/js/plugins/select2/select2.min.js"></script>
     <script src="~/Content/js/framework-ui.js"></script>
+    <script src="~/Content/js/plugins/webuploader/webuploader.min.js"></script>
+    <script src="~/Content/js/plugins/webuploader/saas.uploader.js"></script>
     <script>
         var keyValue = $.request("keyValue");
         $(function () {
@@ -36,6 +38,7 @@
                             }
                         });
                     }
+                    $.taskForm.initUploadify();
                 },
                 submitForm: function () {
                     if (!$('#form1').formValid())
@@ -47,6 +50,14 @@
                         success: function () {
                             $.currentWindow().$("#grid").trigger("reloadGrid");
                         }
+                    });
+                },
+                initUploadify: function () {
+                    $(".upload-img").InitUploader({
+                        filesize: 1024 * 50,
+                        sendurl: "/Task/Upload",
+                        swf: "~/Content/js/plugins/webuploader/uploader.swf",
+                        filetypes: "zip,rar"
                     });
                 }
             };
@@ -119,7 +130,8 @@
                         上传附件
                     </th>
                     <td class="formValue" colspan="3">
-                        <input type="file" name="zipFile" id="zipFile" class="form-control required">
+                        <input type="text" name="taskFile" id="taskFile" class="form-control upload-path required" readonly="readonly"/>
+                        <span class="upload-box upload-img"></span>
                     </td>
                 </tr>
                 <tr>

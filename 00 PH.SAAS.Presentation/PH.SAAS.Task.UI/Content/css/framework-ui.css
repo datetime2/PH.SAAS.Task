@@ -83,3 +83,10 @@
 .wrapper .pop-list li h5{font-size: 12px;font-weight: bold;line-height: 24px;}
 .wrapper .pop-list label{line-height: 30px;display: block;float: left;min-width: 100px;height: 30px;padding: 5px 0;padding-right:15px;}
 .wrapper .pop-list li .form-control{float: left;width: 300px;margin-right: 5px;line-height: 30px;height: 30px;padding:0px;padding-left:5px;margin-top:3px;border-radius: 3px;box-shadow:none;resize: none;}
+.upload-box{position:relative;display:inline-block;height:22px;vertical-align:middle;zoom:1;*display:inline}
+.upload-box .upload-btn{display:inline-block;height:22px;zoom:1;*display:inline}
+.upload-box .upload-progress{position:absolute;top:0;left:0;padding:2px 5px;width:115px;height:16px;border:1px solid #d7d7d7;background:#fff;overflow:hidden}
+.upload-box .upload-progress .txt{display:block;padding-right:10px;font-weight:normal;font-style:normal;font-size:11px;line-height:18px;height:18px;text-overflow:ellipsis;overflow:hidden}
+.upload-box .upload-progress .bar{position:relative;display:block;width:112px;height:4px;border:1px solid #1da76b}
+.upload-box .upload-progress .bar b{display:block;width:0%;height:4px;font-weight:normal;text-indent:-99em;background:#28B779;overflow:hidden}
+.upload-box .upload-progress .close{position:absolute;display:block;top:1px;right:1px;width:14px;height:14px;text-indent:-99em;background:url(../img/skin_icons.png) -56px -196px no-repeat;cursor:pointer;overflow:hidden}

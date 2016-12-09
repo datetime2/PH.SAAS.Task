@@ -23,5 +23,8 @@ namespace PH.SAAS.Task.Models
         public string TaskRemark { get; set; }
         public string ZipFile { get; set; }
         public string TempDataJson { get; set; }
+        public string RootPath { get; set; }
+        public string TaskFile { get; set; }
+        public string FileName { get; set; }
     }
 }
